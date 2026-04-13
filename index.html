@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МСА32 · Матюхин Сергей Сергеевич · Мебель</title>
+  <!-- Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f5f3ef;
+      color: #1e1e1e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* плавные анимации */
+    @keyframes floatChair {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes marqueeFlow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 0 0 0 rgba(44, 44, 44, 0.1); }
+      50% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+      100% { box-shadow: 0 0 0 0 rgba(44, 44, 44, 0.1); }
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      background: #1e1e1e;
+      color: #f0ebe4;
+      padding: 6px 18px;
+      border-radius: 60px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+    }
+    .logo span {
+      font-weight: 300;
+      font-size: 1rem;
+      margin-left: 8px;
+      color: #c9c2b6;
+    }
+
+    .master {
+      font-size: 1.2rem;
+      font-weight: 400;
+      background: white;
+      padding: 8px 22px;
+      border-radius: 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    /* бегущая строка — стильная */
+    .marquee-wrapper {
+      background: #1e1e1e;
+      color: #ede6db;
+      padding: 12px 0;
+      margin: 16px 0 28px;
+      border-radius: 60px;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marqueeFlow 28s linear infinite;
+      font-size: 1.6rem;
+      font-weight: 450;
+      letter-spacing: 0.5px;
+      word-spacing: 12px;
+    }
+
+    .marquee-content i {
+      margin: 0 20px;
+      color: #bbaa90;
+      font-size: 1.8rem;
+      vertical-align: middle;
+    }
+
+    /* hero с анимированной мебелью */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin: 40px 0 60px;
+      animation: slideIn 0.8s ease;
+    }
+
+    .hero-text {
+      flex: 1.2;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h1 strong {
+      font-weight: 700;
+      background: linear-gradient(145deg, #2e2b28, #1e1e1e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: #3e3a35;
+      margin: 24px 0 32px;
+      max-width: 550px;
+    }
+
+    .hero-furniture {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 260px;
+    }
+
+    /* анимированная мебель: стул + стол (стиль) */
+    .furniture-set {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .chair-animated {
+      font-size: 8rem;
+      animation: floatChair 4s ease-in-out infinite;
+      filter: drop-shadow(0 20px 12px rgba(0,0,0,0.08));
+      color: #5a4e42;
+    }
+
+    .table-modern {
+      font-size: 9rem;
+      color: #3e3a35;
+      transform: rotate(2deg);
+      transition: transform 0.2s;
+    }
+
+    .lamp-icon {
+      font-size: 5rem;
+      margin-top: 30px;
+      color: #aa9b8a;
+      animation: softGlow 3s infinite;
+    }
+
+    /* навигационные кнопки */
+    .nav-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 30px 0 20px;
+    }
+
+    .btn {
+      background: white;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.25s;
+      border: 1px solid rgba(0,0,0,0.02);
+      color: #1e1e1e;
+    }
+
+    .btn i {
+      font-size: 1.4rem;
+      color: #8b7a66;
+    }
+
+    .btn:hover {
+      background: #1e1e1e;
+      color: white;
+      box-shadow: 0 16px 24px -8px rgba(0,0,0,0.2);
+      transform: translateY(-3px);
+    }
+
+    .btn:hover i {
+      color: #ddd2c2;
+    }
+
+    /* секции (прайс, работы, отзывы) — переключение */
+    .section-panel {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 36px 32px;
+      margin: 20px 0 50px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+      border: 1px solid rgba(255,255,255,0.6);
+      transition: all 0.3s;
+      animation: slideIn 0.5s;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hidden-section {
+      display: none;
+    }
+
+    .active-section {
+      display: block;
+    }
+
+    /* карточки прайса */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .price-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+      border: 1px solid #eeeae5;
+    }
+
+    .price-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      background: #e3ddd6;
+    }
+
+    .price-name {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+
+    .price-value {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-top: 10px;
+      color: #1e1e1e;
+    }
+
+    /* галерея работ */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+      transition: transform 0.2s;
+      border: 1px solid #e9e2da;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 14px 16px;
+      font-weight: 500;
+    }
+
+    /* отзывы */
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .review {
+      background: white;
+      border-radius: 28px;
+      padding: 26px 30px;
+      border-left: 8px solid #8b7a66;
+    }
+
+    .review-text {
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      margin-top: 16px;
+      font-weight: 600;
+      color: #4a423a;
+    }
+
+    /* подвал */
+    .footer {
+      text-align: center;
+      padding: 36px 0 20px;
+      color: #6b6258;
+      border-top: 1px solid #e2dbd2;
+      margin-top: 20px;
+    }
+
+    /* адаптив */
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.4rem;
+      }
+      .furniture-set {
+        justify-content: center;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- шапка -->
+    <header class="header">
+      <div class="logo">МСА32<span>мебель</span></div>
+      <div class="master"><i class="fas fa-user-check" style="margin-right: 10px;"></i>Матюхин Сергей Сергеевич</div>
+    </header>
+
+    <!-- бегущая строка с крупными компаниями -->
+    <div class="marquee-wrapper">
+      <div class="marquee-content">
+        <i class="fas fa-building"></i> АВИТО <i class="fas fa-box"></i> OZON <i class="fas fa-truck"></i> WILDBERRIES 
+        <i class="fas fa-building"></i> АВИТО <i class="fas fa-box"></i> OZON <i class="fas fa-truck"></i> WILDBERRIES 
+        <i class="fas fa-building"></i> АВИТО <i class="fas fa-box"></i> OZON <i class="fas fa-truck"></i> WILDBERRIES 
+        <i class="fas fa-handshake"></i> КРУПНЫЕ ПАРТНЁРЫ <i class="fas fa-star"></i>
+      </div>
+    </div>
+
+    <!-- hero + анимация мебели -->
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Изготовление и сборка <br><strong>мебели в современном стиле</strong></h1>
+        <div class="hero-desc">
+          <i class="fas fa-check-circle" style="color: #5f7a5f; margin-right: 8px;"></i> 
+          Корпусная, мягкая, эксклюзив — с душой и точностью.
+        </div>
+        <!-- кнопки навигации -->
+        <div class="nav-actions">
+          <button class="btn" id="showPriceBtn"><i class="fas fa-tag"></i> Прайс</button>
+          <button class="btn" id="showWorksBtn"><i class="fas fa-images"></i> Готовые работы</button>
+          <button class="btn" id="showReviewsBtn"><i class="fas fa-comment-dots"></i> Отзывы</button>
+        </div>
+      </div>
+      <div class="hero-furniture">
+        <div class="furniture-set">
+          <!-- анимированная мебель: стул + современный стол + декор -->
+          <div class="chair-animated"><i class="fas fa-chair"></i></div>
+          <div class="table-modern"><i class="fas fa-table"></i></div>
+          <div class="lamp-icon"><i class="fas fa-lightbulb"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- БЛОК ПРАЙС (скрыт/показан по кнопке) -->
+    <div id="priceSection" class="section-panel hidden-section">
+      <div class="section-title"><i class="fas fa-ruble-sign"></i> Примерные цены · МСА32</div>
+      <div class="price-grid">
+        <div class="price-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23d9cdbf'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='20' fill='%233d362e'%3EШкаф-купе%3C/text%3E%3C/svg%3E" alt="Шкаф">
+          <div class="price-name">Шкаф-купе (2.4м)</div>
+          <div class="price-value">от 48 500 ₽</div>
+        </div>
+        <div class="price-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23c1b4a6'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='20' fill='%232b241f'%3EКухонный гарнитур%3C/text%3E%3C/svg%3E" alt="Кухня">
+          <div class="price-name">Кухня (погонаж)</div>
+          <div class="price-value">от 19 800 ₽/м.п.</div>
+        </div>
+        <div class="price-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23b8aa9c'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='20' fill='%23221e1a'%3EСтол + стулья%3C/text%3E%3C/svg%3E" alt="Столовая группа">
+          <div class="price-name">Обеденная группа</div>
+          <div class="price-value">от 37 200 ₽</div>
+        </div>
+        <div class="price-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23a59788'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='20' fill='%23f2ebe2'%3EКровать с подъемным%3C/text%3E%3C/svg%3E" alt="Кровать">
+          <div class="price-name">Кровать (160х200)</div>
+          <div class="price-value">от 34 900 ₽</div>
+        </div>
+      </div>
+      <p style="margin-top: 28px; opacity: 0.8;"><i class="fas fa-calculator"></i> Точный расчёт после замера. Работаем с дизайн-проектами.</p>
+    </div>
+
+    <!-- БЛОК ГОТОВЫЕ РАБОТЫ -->
+    <div id="worksSection" class="section-panel hidden-section">
+      <div class="section-title"><i class="fas fa-hammer"></i> Альбом работ · МСА32</div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220' viewBox='0 0 300 220'%3E%3Crect width='300' height='220' fill='%23d6c9bc'/%3E%3Ctext x='30' y='120' font-family='Arial' font-size='18' fill='%232b251f'%3EГостиная лофт%3C/text%3E%3C/svg%3E" alt="гостиная">
+          <div class="gallery-caption">Гостиная в стиле лофт</div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220' viewBox='0 0 300 220'%3E%3Crect width='300' height='220' fill='%23e0d3c5'/%3E%3Ctext x='30' y='120' font-family='Arial' font-size='18' fill='%231f1b17'%3EСпальня с подсветкой%3C/text%3E%3C/svg%3E" alt="спальня">
+          <div class="gallery-caption">Спальня "Милан"</div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220' viewBox='0 0 300 220'%3E%3Crect width='300' height='220' fill='%23cbbeb0'/%3E%3Ctext x='30' y='120' font-family='Arial' font-size='18' fill='%23262019'%3EДетская "Мечта"%3C/text%3E%3C/svg%3E" alt="детская">
+          <div class="gallery-caption">Детская комната</div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220' viewBox='0 0 300 220'%3E%3Crect width='300' height='220' fill='%23b7a99b'/%3E%3Ctext x='30' y='120' font-family='Arial' font-size='18' fill='%23f2e8dc'%3EОфисная перегородка%3C/text%3E%3C/svg%3E" alt="офис">
+          <div class="gallery-caption">Офисная мебель (OZON)</div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220' viewBox='0 0 300 220'%3E%3Crect width='300' height='220' fill='%23a39485'/%3E%3Ctext x='30' y='120' font-family='Arial' font-size='18' fill='%23f3ede5'%3EПрихожая на заказ%3C/text%3E%3C/svg%3E" alt="прихожая">
+          <div class="gallery-caption">Прихожая МСА32</div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220' viewBox='0 0 300 220'%3E%3Crect width='300' height='220' fill='%239d8e7e'/%3E%3Ctext x='30' y='120' font-family='Arial' font-size='18' fill='%23fff9f2'%3EТВ-тумба с LED%3C/text%3E%3C/svg%3E" alt="тумба">
+          <div class="gallery-caption">ТВ-тумба с подсветкой</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- БЛОК ОТЗЫВЫ -->
+    <div id="reviewsSection" class="section-panel hidden-section">
+      <div class="section-title"><i class="fas fa-star"></i> Что говорят клиенты</div>
+      <div class="reviews-list">
+        <div class="review">
+          <div class="review-text">«Сергей собрал кухню и шкафы в новостройке. Всё чётко по уровню, учёл все пожелания. Результат — как с обложки журнала! Стиль современный, фурнитура Blum.»</div>
+          <div class="review-author">— Анна К., проект для Avito</div>
+        </div>
+        <div class="review">
+          <div class="review-text">«Заказывали мебель для пункта выдачи Wildberries. Матюхин сделал надёжные стеллажи и стойку ресепшн. Сборка быстрая, материал качественный.»</div>
+          <div class="review-author">— Дмитрий, Вайлдберриз</div>
+        </div>
+        <div class="review">
+          <div class="review-text">«МСА32 — это уровень. Сергей Сергеевич лично контролирует процесс. Делал встроенный шкаф в спальню: идеальная геометрия, скрытые ручки, всё стильно.»</div>
+          <div class="review-author">— Ольга М., частный заказ</div>
+        </div>
+        <div class="review">
+          <div class="review-text">«Работали с Ozon: нужно было изготовить стойки для склада. Цена/качество отличные, сдал объект раньше срока. Рекомендую!»</div>
+          <div class="review-author">— Иван, логистика OZON</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- подвал -->
+    <div class="footer">
+      <p><i class="far fa-copyright"></i> МСА32 · Матюхин Сергей Сергеевич · изготовление и сборка мебели</p>
+      <p style="margin-top: 10px;"><i class="fas fa-phone-alt"></i> +7 (XXX) XXX-XX-XX  ·  <i class="fab fa-telegram"></i> @msa32_furniture</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+      // Элементы секций
+      const priceSec = document.getElementById('priceSection');
+      const worksSec = document.getElementById('worksSection');
+      const reviewsSec = document.getElementById('reviewsSection');
+
+      // Кнопки
+      const priceBtn = document.getElementById('showPriceBtn');
+      const worksBtn = document.getElementById('showWorksBtn');
+      const reviewsBtn = document.getElementById('showReviewsBtn');
+
+      // Функция скрыть все секции
+      function hideAllSections() {
+        priceSec.classList.add('hidden-section');
+        worksSec.classList.add('hidden-section');
+        reviewsSec.classList.add('hidden-section');
+      }
+
+      // Показать конкретную секцию, плавно
+      function showSection(section) {
+        hideAllSections();
+        section.classList.remove('hidden-section');
+        // легкий скролл к секции
+        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Обработчики
+      priceBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(priceSec);
+      });
+
+      worksBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(worksSec);
+      });
+
+      reviewsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(reviewsSec);
+      });
+
+      // Дополнительно: при загрузке можно не показывать ничего (или оставить скрытыми)
+      // По умолчанию все скрыты, ждем клика.
+      // Но если хочется, чтобы прайс был открыт первым? По условию не сказано, оставим скрытыми.
+
+      // маленькая фишка: при нажатии на логотип скрыть все секции (вернуть как было)
+      document.querySelector('.logo').addEventListener('click', () => {
+        hideAllSections();
+      });
+
+      // анимация иконок при наведении (уже в css)
+    })();
+  </script>
+  <!-- добавляем плавность и небольшие детали -->
+</body>
+</html>
